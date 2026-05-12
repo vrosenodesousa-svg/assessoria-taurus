@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Assessoria Taurus – Lote a Agenda da Sua Barbearia</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#F5C518;
+  --gold-dark:#C9A000;
+  --gold-light:#FFE066;
+  --black:#0A0A0A;
+  --dark:#111111;
+  --dark2:#1A1A1A;
+  --dark3:#222222;
+  --gray:#888;
+  --white:#FAFAFA;
+}
+html{scroll-behavior:smooth;background:#0A0A0A !important;}
+body{background:#0A0A0A !important;color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;-webkit-tap-highlight-color:transparent;}
+@media screen{html,body{background-color:#0A0A0A !important;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(10,10,10,0.95);border-bottom:1px solid rgba(245,197,24,0.15);backdrop-filter:blur(8px);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+.logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--white);}
+.logo-text span{color:var(--gold);}
+.nav-cta{
+  background: linear-gradient(135deg, #FFD700 0%, #F5C518 40%, #C9A000 100%);
+  color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px;
+  letter-spacing: 2.5px;
+  padding: 12px 28px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 3px;
+  box-shadow: 0 0 14px rgba(245,197,24,0.5), 0 4px 15px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+  position: relative;
+  transition: all 0.25s ease;
+  outline: 1.5px solid rgba(255,215,0,0.6);
+  outline-offset: 2px;
+}
+.nav-cta:hover{
+  background: linear-gradient(135deg, #FFE55C 0%, #FFD700 40%, #D4A800 100%);
+  box-shadow: 0 0 24px rgba(245,197,24,0.75), 0 6px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.35);
+  transform: translateY(-2px);
+  outline-color: rgba(255,235,50,0.9);
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(245,197,24,0.06) 0%, transparent 70%);}
+.hero-logo{width:280px;max-width:80vw;margin-bottom:32px;filter:drop-shadow(0 0 30px rgba(245,197,24,0.3));}
+.hero-badge{display:inline-block;background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;margin-bottom:28px;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,8vw,110px);line-height:0.92;letter-spacing:2px;margin-bottom:24px;}
+.hero h1 em{color:var(--gold);font-style:normal;display:block;}
+.hero-sub{font-size:clamp(16px,2.2vw,22px);color:#aaa;max-width:620px;line-height:1.6;margin-bottom:40px;font-weight:400;}
+.hero-sub strong{color:var(--white);}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.btn-primary{background:var(--gold);color:var(--black);font-weight:900;font-size:16px;padding:18px 42px;border:none;cursor:pointer;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--white);font-weight:700;font-size:15px;padding:17px 40px;border:1.5px solid rgba(255,255,255,0.25);cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+
+/* TICKER */
+.ticker-wrap{background:var(--gold);padding:13px 0;overflow:hidden;position:relative;}
+.ticker-inner{display:flex;animation:ticker 30s linear infinite;width:max-content;}
+.ticker-item{white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);padding:0 32px;}
+.ticker-item::after{content:'•';padding-left:32px;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* AVISO */
+.aviso{background:var(--dark2);border-left:4px solid var(--gold);margin:60px auto;max-width:900px;padding:28px 36px;display:flex;gap:20px;align-items:flex-start;}
+.aviso-label{background:var(--gold);color:var(--black);font-weight:900;font-size:11px;letter-spacing:2px;padding:4px 10px;white-space:nowrap;margin-top:4px;}
+.aviso p{font-size:17px;line-height:1.6;color:#ccc;}
+.aviso p strong{color:var(--white);font-size:19px;display:block;margin-bottom:6px;}
+
+/* FORM SECTION */
+.form-section{padding:80px 24px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+@media(max-width:820px){.form-section{grid-template-columns:1fr;}
+.form-section .form-box{order:-1;}}
+.form-left h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,58px);line-height:1;margin-bottom:20px;}
+.form-left h2 span{color:var(--gold);}
+.form-left p{color:#aaa;font-size:16px;line-height:1.7;margin-bottom:32px;}
+.steps{display:flex;flex-direction:column;gap:20px;}
+.step{display:flex;gap:16px;align-items:flex-start;}
+.step-num{background:var(--gold);color:var(--black);font-weight:900;font-size:13px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-text strong{display:block;color:var(--white);font-size:15px;font-weight:700;margin-bottom:4px;}
+.step-text p{color:#888;font-size:14px;line-height:1.5;}
+
+.form-box{background:var(--dark2);border:1px solid rgba(245,197,24,0.2);padding:36px;}
+.form-box h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:8px;}
+.form-box .form-sub{color:#888;font-size:14px;margin-bottom:28px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:13px;font-weight:600;color:#aaa;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;}
+.form-group input,.form-group select{width:100%;background:var(--dark3);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:'Barlow',sans-serif;font-size:15px;padding:13px 16px;outline:none;transition:border-color 0.2s;}
+.form-group input::placeholder{color:#555;}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);}
+.form-group select option{background:var(--dark3);}
+.form-submit{width:100%;background:var(--gold);color:var(--black);font-family:'Barlow',sans-serif;font-weight:900;font-size:16px;padding:18px;border:none;cursor:pointer;text-transform:uppercase;letter-spacing:2px;margin-top:8px;transition:all 0.2s;}
+.form-submit:hover{background:var(--gold-light);}
+.form-privacy{font-size:12px;color:#555;text-align:center;margin-top:14px;}
+
+/* STATS */
+.stats{background:var(--dark2);padding:70px 24px;}
+.stats-inner{max-width:1100px;margin:0 auto;}
+.stats-title{text-align:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,50px);margin-bottom:50px;}
+.stats-title span{color:var(--gold);}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;}
+.stat-box{background:var(--dark3);padding:36px 24px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);line-height:1;display:block;}
+.stat-label{font-size:14px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:8px;}
+
+/* DEPOIMENTOS */
+.dep{padding:80px 24px;max-width:1100px;margin:0 auto;}
+.section-label{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.section-label span{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+.section-label::before{content:'';display:block;width:32px;height:2px;background:var(--gold);}
+.dep h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);margin-bottom:16px;line-height:1;}
+.dep>p{color:#aaa;font-size:16px;margin-bottom:48px;max-width:600px;}
+.dep-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.dep-card{background:var(--dark2);border:1px solid rgba(255,255,255,0.07);padding:28px;}
+.dep-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:14px;}
+.dep-text{font-size:15px;color:#bbb;line-height:1.7;margin-bottom:20px;font-style:italic;}
+.dep-author{display:flex;align-items:center;gap:12px;}
+.dep-avatar{width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--black);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.dep-name{font-weight:700;font-size:14px;}
+.dep-role{font-size:13px;color:#666;}
+
+/* QUEM SOMOS */
+.about{padding:80px 24px;background:var(--dark2);}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media(max-width:820px){.about-inner{grid-template-columns:1fr;}}
+.about-img{position:relative;}
+.about-img-box{background:var(--dark3);border:1px solid rgba(245,197,24,0.2);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.about-img-box svg{width:60%;opacity:0.6;}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:var(--gold);color:var(--black);padding:18px 24px;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;line-height:1.2;text-align:center;}
+.about-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,52px);line-height:1;margin-bottom:20px;}
+.about-text h2 span{color:var(--gold);}
+.about-text p{color:#aaa;font-size:16px;line-height:1.8;margin-bottom:16px;}
+.about-list{margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+.about-item{display:flex;gap:12px;align-items:flex-start;}
+.about-item::before{content:'✓';color:var(--gold);font-weight:900;font-size:16px;margin-top:1px;flex-shrink:0;}
+.about-item span{color:#ccc;font-size:15px;}
+
+/* O QUE FAZEMOS */
+.services{padding:80px 24px;max-width:1100px;margin:0 auto;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-top:48px;}
+.service-card{background:var(--dark2);border:1px solid rgba(255,255,255,0.07);padding:28px;transition:border-color 0.2s;}
+.service-card:hover{border-color:rgba(245,197,24,0.4);}
+.service-icon{font-size:32px;margin-bottom:16px;}
+.service-card h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;margin-bottom:10px;text-transform:uppercase;}
+.service-card p{font-size:14px;color:#888;line-height:1.7;}
+
+/* FAQ */
+.faq{padding:80px 24px;background:var(--dark2);}
+.faq-inner{max-width:820px;margin:0 auto;}
+.faq h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);margin-bottom:8px;}
+.faq>p{color:#888;margin-bottom:48px;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,0.08);padding:20px 0;cursor:pointer;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-q span{font-size:16px;font-weight:600;color:var(--white);}
+.faq-q em{color:var(--gold);font-style:normal;font-size:22px;flex-shrink:0;transition:transform 0.3s;}
+.faq-a{font-size:15px;color:#888;line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.4s ease, padding 0.3s;}
+.faq-item.open .faq-q em{transform:rotate(45deg);}
+.faq-item.open .faq-a{max-height:200px;padding-top:14px;}
+
+/* CTA FINAL */
+.cta-final{padding:100px 24px;text-align:center;position:relative;overflow:hidden;}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%, rgba(245,197,24,0.08) 0%, transparent 70%);}
+.cta-final h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,90px);line-height:0.95;margin-bottom:24px;position:relative;}
+.cta-final h2 span{color:var(--gold);}
+.cta-final p{color:#aaa;font-size:18px;margin-bottom:40px;position:relative;}
+.cta-final .btn-primary{font-size:18px;padding:22px 56px;position:relative;}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(245,197,24,0.15);padding:40px 24px;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:4px;margin-bottom:16px;}
+.footer-logo span{color:var(--gold);}
+footer p{color:#444;font-size:13px;}
+footer a{color:var(--gold);text-decoration:none;}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:200;background:#25D366;color:white;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:30px;height:30px;fill:white;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero>*{animation:fadeUp 0.7s ease both;}
+.hero-logo{animation-delay:0s}
+.hero-badge{animation-delay:0.1s}
+.hero h1{animation-delay:0.2s}
+.hero-sub{animation-delay:0.3s}
+.hero-buttons{animation-delay:0.4s}
+
+@media(max-width:600px){
+  .aviso{flex-direction:column;padding:20px;}
+  .form-box{padding:24px 20px;}
+  .about-badge{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo-text">ASSESSORIA <span>TAURUS</span></div>
+    <a href="#form" class="nav-cta">Quero Encher a Agenda</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div style="display:inline-flex;align-items:center;gap:14px;margin-bottom:32px;filter:drop-shadow(0 0 25px rgba(245,197,24,0.25));">
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:4px;color:#FAFAFA;white-space:nowrap;">ASSESSORIA <span style="color:#F5C518;">TAURUS</span></span>
+    <img src="data:image/png;base64,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" alt="Touro Taurus" style="height:clamp(48px,6vw,80px);width:auto;">
+  </div>
+
+  <div class="hero-badge">Especialistas em Marketing para Barbearias</div>
+  <h1>Sua Barbearia Precisa da Maior Assessoria de <em>Marketing para Barbearias</em> do Brasil!</h1>
+  <p class="hero-sub">Nós somos a estratégia por trás das barbearias que <strong>DOMINAM O MERCADO.</strong></p>
+  <div class="hero-buttons">
+    <a href="#form" class="btn-primary">Quero Lotar Minha Agenda →</a>
+
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item">+200 Barbearias Atendidas</span>
+    <span class="ticker-item">+50 Mil Agendamentos Gerados</span>
+    <span class="ticker-item">+3 Anos de Experiência</span>
+    <span class="ticker-item">Resultados em até 30 Dias</span>
+    <span class="ticker-item">Tráfego Pago Especializado</span>
+    <span class="ticker-item">Gestão de Redes Sociais</span>
+    <span class="ticker-item">+200 Barbearias Atendidas</span>
+    <span class="ticker-item">+50 Mil Agendamentos Gerados</span>
+    <span class="ticker-item">+3 Anos de Experiência</span>
+    <span class="ticker-item">Resultados em até 30 Dias</span>
+    <span class="ticker-item">Tráfego Pago Especializado</span>
+    <span class="ticker-item">Gestão de Redes Sociais</span>
+  </div>
+</div>
+
+<!-- FORM -->
+<section class="form-section">
+  <div class="form-left">
+    <div class="section-label"><span>Como Funciona</span></div>
+    <h2>É <span>Simples</span> assim</h2>
+    <p>Em 3 passos, você vai ter um especialista dedicado fazendo sua agenda lotar com clientes reais.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-text">
+          <strong>Preencha o Formulário</strong>
+          <p>Insira seus dados. Garantimos total segurança. Usamos apenas para contato.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-text">
+          <strong>Receba uma Ligação</strong>
+          <p>Um especialista da Taurus entra em contato em até 5 minutos em horário comercial.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-text">
+          <strong>Monte sua Estratégia</strong>
+          <p>Desenvolvemos um plano personalizado para a realidade da sua barbearia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-box" id="form">
+    <h3 style="text-align:center;">Sua Agenda Pode Estar <span style="color:var(--gold);">Lotada</span> nas Próximas Semanas!</h3>
+    <p class="form-sub" style="text-align:center;">Preencha abaixo e entraremos em contato rapidamente.</p>
+
+    <div class="form-group">
+      <label>Nome completo</label>
+      <input type="text" placeholder="Seu nome">
+    </div>
+    <div class="form-group">
+      <label>WhatsApp</label>
+      <input type="tel" placeholder="(00) 00000-0000">
+    </div>
+    <div class="form-group">
+      <label>Nome da Barbearia</label>
+      <input type="text" placeholder="Ex: Barbearia do Silva">
+    </div>
+    <div class="form-group">
+      <label>Cidade</label>
+      <input type="text" placeholder="Sua cidade">
+    </div>
+    <div class="form-group">
+      <label>Faturamento mensal</label>
+      <select>
+        <option value="" disabled selected>Selecione</option>
+        <option>Até R$ 5 mil</option>
+        <option>R$ 5 mil a R$ 15 mil</option>
+        <option>R$ 15 mil a R$ 30 mil</option>
+        <option>R$ 30 mil a R$ 60 mil</option>
+        <option>R$ 60 mil a R$ 100 mil</option>
+        <option>Acima de R$ 100 mil</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Quantos barbeiros trabalham com você?</label>
+      <select>
+        <option value="" disabled selected>Selecione</option>
+        <option>Só eu</option>
+        <option>2 a 3 barbeiros</option>
+        <option>4 a 6 barbeiros</option>
+        <option>7 ou mais</option>
+      </select>
+    </div>
+
+    <button class="form-submit" onclick="alert('Obrigado! Em breve entraremos em contato.')">Quero Encher Minha Agenda →</button>
+    <p class="form-privacy">🔒 Seus dados estão seguros. Não enviamos spam.</p>
+  </div>
+</section>
+
+<!-- AVISO -->
+<div style="margin:60px auto;max-width:900px;padding:0 24px;">
+  <!-- Cabeçalho do aviso -->
+  <div style="background:linear-gradient(135deg,#1a1a1a,#111);border:1px solid rgba(245,197,24,0.3);border-top:4px solid var(--gold);padding:28px 36px 32px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(245,197,24,0.06),transparent 70%);pointer-events:none;"></div>
+    <!-- Badge AVISO -->
+    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;">
+      <span style="background:var(--gold);color:#000;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:3px;padding:5px 14px;">⚠ AVISO</span>
+    </div>
+    <!-- Título principal -->
+    <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,4vw,36px);letter-spacing:2px;line-height:1.15;color:var(--white);margin-bottom:32px;">
+      NÃO SAIA AGORA! FALTAM POUCOS SEGUNDOS PARA<br>
+      <span style="color:var(--gold);">SUA BARBEARIA MUDAR.</span>
+    </h2>
+    <!-- Passos -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <!-- Passo 1 -->
+      <div style="display:flex;gap:20px;align-items:flex-start;background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.15);padding:20px 24px;">
+        <div style="flex-shrink:0;background:var(--gold);color:#000;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">01</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">PASSO 1</div>
+          <p style="font-size:16px;color:#ccc;line-height:1.6;margin:0;">Não feche essa página ainda — enquanto você pensa, seu concorrente já está preenchendo a agenda com estratégia.</p>
+        </div>
+      </div>
+      <!-- Passo 2 -->
+      <div style="display:flex;gap:20px;align-items:flex-start;background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.15);padding:20px 24px;">
+        <div style="flex-shrink:0;background:var(--gold);color:#000;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;">02</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:var(--gold);margin-bottom:6px;">PASSO 2</div>
+          <p style="font-size:16px;color:#ccc;line-height:1.6;margin:0;">Em um prazo de até 5 minutos em horário comercial, um dos nossos especialistas entrará em contato diretamente para agendar a reunião mais importante com você.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stats-title">Resultados que <span>Falam por Si</span></div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-num">+200</span>
+        <div class="stat-label">Barbearias Atendidas</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">+50K</span>
+        <div class="stat-label">Agendamentos Gerados</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">30</span>
+        <div class="stat-label">Dias p/ 1º Resultado</div>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">+3</span>
+        <div class="stat-label">Anos de Experiência</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="dep">
+  <div class="section-label"><span>Depoimentos</span></div>
+  <h2>Mais de 200 Barbearias<br>com Resultados.</h2>
+  <p>Isso é Assessoria Taurus.</p>
+  <div class="dep-grid">
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Em 45 dias minha agenda estava completamente cheia. Precisei contratar mais um barbeiro. O tráfego pago deles é cirúrgico — só traz cliente que realmente quer marcar."</p>
+      <div class="dep-author">
+        <div class="dep-avatar">RS</div>
+        <div>
+          <div class="dep-name">Rafael Souza</div>
+          <div class="dep-role">Barbearia Clássica · São Paulo, SP</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Antes ficava dependendo de indicação. Agora tenho fila de espera. A gestão do meu Instagram mudou completamente. Os reels geram agendamento de verdade."</p>
+      <div class="dep-author">
+        <div class="dep-avatar">MC</div>
+        <div>
+          <div class="dep-name">Mateus Carvalho</div>
+          <div class="dep-role">Barbearia Gold · Belo Horizonte, MG</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <p class="dep-text">"Triplicamos o número de clientes em 3 meses. O acompanhamento é constante — qualquer dúvida, eles respondem na hora. Vale cada centavo investido."</p>
+      <div class="dep-author">
+        <div class="dep-avatar">LF</div>
+        <div>
+          <div class="dep-name">Lucas Ferreira</div>
+          <div class="dep-role">Barbearia Urban · Curitiba, PR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="about-inner">
+    <div class="about-text" style="grid-column:1/-1;max-width:700px;">
+      <div class="section-label"><span>Quem Somos</span></div>
+      <h2>Especialistas no <span>Mercado</span> de Barbearias</h2>
+      <p>Na Assessoria Taurus, não somos uma agência genérica. Somos especialistas em transformar barbearias em máquinas de agendamento, trabalhando exclusivamente com o segmento de beleza masculina.</p>
+      <p>Nosso time é composto por gestores de tráfego, produtores de conteúdo e estrategistas de marketing que só falam a língua da barbearia.</p>
+      <div class="about-list">
+        <div class="about-item"><span>Gestão de tráfego pago no Meta e Google</span></div>
+        <div class="about-item"><span>Criação de conteúdo para redes sociais</span></div>
+        <div class="about-item"><span>Estratégias de retenção de clientes via WhatsApp</span></div>
+        <div class="about-item"><span>Acompanhamento de métricas e resultados semanais</span></div>
+        <div class="about-item"><span>Suporte dedicado do seu time de especialistas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services">
+  <div class="section-label"><span>O Que Fazemos</span></div>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);margin-top:10px;">A Taurus Estrutura o Marketing da<br><span style="color:var(--gold)">Sua Barbearia do Zero</span></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Tráfego Pago</h3>
+      <p>Anúncios no Meta e Google calibrados para atrair clientes da sua região que já estão prontos para agendar.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎬</div>
+      <h3>Conteúdo & Reels</h3>
+      <p>Produção de vídeos e artes para Instagram e TikTok que geram alcance orgânico e viram agendamentos reais.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💬</div>
+      <h3>WhatsApp Marketing</h3>
+      <p>Disparos inteligentes para sua base de clientes, reativando quem sumiu e incentivando retorno contínuo.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Gestão & Relatórios</h3>
+      <p>Acompanhamento semanal de resultados com relatório claro: quantos clientes novos, custo por agendamento e retorno.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⭐</div>
+      <h3>Reputação Online</h3>
+      <p>Gestão de Google Meu Negócio e avaliações para sua barbearia aparecer na frente quando alguém busca no Google.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Estratégia Comercial</h3>
+      <p>Consultoria de precificação, pacotes e programas de fidelidade que aumentam o ticket médio da barbearia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="section-label"><span>Perguntas Frequentes</span></div>
+    <h2>Ficou com Dúvidas?</h2>
+    <p>Talvez a resposta esteja aqui.</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>O que exatamente a Assessoria Taurus faz?</span>
+        <em>+</em>
+      </div>
+      <p class="faq-a">Somos uma assessoria especializada em marketing para barbearias. Ajudamos barbeiros e donos de barbearia a lotarem a agenda por meio de tráfego pago, gestão de redes sociais, WhatsApp marketing e estratégias de fidelização de clientes.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Em quanto tempo verei resultados?</span>
+        <em>+</em>
+      </div>
+      <p class="faq-a">Depende do estágio atual da sua barbearia, mas na maioria dos casos nossos clientes começam a sentir o impacto nos agendamentos em 20 a 40 dias após o início das campanhas.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Vocês trabalham apenas com barbearias?</span>
+        <em>+</em>
+      </div>
+      <p class="faq-a">Sim. Nossa especialização exclusiva em barbearias é o que nos diferencia. Entendemos o mercado, o público masculino e as sazonalidades do setor melhor do que qualquer agência generalista.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Preciso ter muitos seguidores para ter resultado?</span>
+        <em>+</em>
+      </div>
+      <p class="faq-a">Não. O tráfego pago funciona independentemente do número de seguidores. Colocamos seus anúncios na frente das pessoas certas na sua cidade, mesmo que você esteja começando do zero nas redes sociais.</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Posso cancelar quando quiser?</span>
+        <em>+</em>
+      </div>
+      <p class="faq-a">Sim, trabalhamos com contratos flexíveis. Mas a grande maioria dos clientes fica conosco porque vê resultado — não porque está preso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Pronto para <span>Lotar</span><br>Sua Agenda?</h2>
+  <p>Fale agora com um especialista Taurus e descubra o plano ideal para a sua barbearia.</p>
+  <a href="#form" class="btn-primary">Quero Encher Minha Agenda →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ASSESSORIA <span>TAURUS</span></div>
+  <p>2025 © Assessoria Taurus · Especialistas em Marketing para Barbearias</p>
+  <p style="margin-top:8px;"><a href="#">Instagram</a> · <a href="#">WhatsApp</a></p>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5500000000000" class="wa-float" target="_blank" title="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.528 5.845L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 01-5.007-1.374l-.36-.214-3.726.973.994-3.63-.234-.374A9.817 9.817 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+function toggleFaq(el){
+  const item=el.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+</script>
+</body>
+</html>

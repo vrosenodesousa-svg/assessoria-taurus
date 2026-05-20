@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0A0A">
+<title>Assessoria Taurus – Recebemos seu Contato!</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#F5C518;
+  --gold-dark:#C9A000;
+  --gold-light:#FFE066;
+  --black:#0A0A0A;
+  --dark:#111111;
+  --dark2:#1A1A1A;
+  --dark3:#222222;
+  --white:#FAFAFA;
+}
+html,body{background:#0A0A0A !important;color:var(--white);font-family:'Barlow',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(10,10,10,0.97);border-bottom:1px solid rgba(245,197,24,0.15);backdrop-filter:blur(8px);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:center;}
+
+/* HERO OBRIGADO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(245,197,24,0.07) 0%,transparent 70%);pointer-events:none;}
+
+/* Confete animado */
+.confete{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;}
+.confete span{position:absolute;top:-20px;width:10px;height:10px;background:var(--gold);animation:cair linear infinite;opacity:0.7;border-radius:2px;}
+.confete span:nth-child(1){left:10%;animation-duration:3.2s;animation-delay:0s;transform:rotate(30deg);}
+.confete span:nth-child(2){left:20%;animation-duration:2.8s;animation-delay:0.5s;background:#fff;border-radius:50%;width:6px;height:6px;}
+.confete span:nth-child(3){left:35%;animation-duration:3.5s;animation-delay:1s;transform:rotate(60deg);}
+.confete span:nth-child(4){left:50%;animation-duration:2.5s;animation-delay:0.2s;background:#fff;width:8px;height:4px;}
+.confete span:nth-child(5){left:65%;animation-duration:3s;animation-delay:0.8s;transform:rotate(45deg);}
+.confete span:nth-child(6){left:75%;animation-duration:2.9s;animation-delay:1.2s;background:#fff;border-radius:50%;width:6px;height:6px;}
+.confete span:nth-child(7){left:85%;animation-duration:3.3s;animation-delay:0.4s;transform:rotate(20deg);}
+.confete span:nth-child(8){left:90%;animation-duration:2.7s;animation-delay:0.9s;background:#fff;width:5px;height:5px;}
+@keyframes cair{0%{top:-20px;opacity:1;transform:translateX(0) rotate(0deg);}100%{top:110%;opacity:0;transform:translateX(80px) rotate(360deg);}}
+
+/* CHECKMARK */
+.check-circle{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#F5C518,#C9A000);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 0 40px rgba(245,197,24,0.4);animation:pulse 2s ease infinite;flex-shrink:0;}
+.check-circle svg{width:44px;height:44px;}
+@keyframes pulse{0%,100%{box-shadow:0 0 30px rgba(245,197,24,0.4);}50%{box-shadow:0 0 60px rgba(245,197,24,0.7);}}
+
+.hero-badge{display:inline-block;background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.4);color:var(--gold);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;margin-bottom:24px;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7vw,80px);line-height:1;letter-spacing:2px;margin-bottom:16px;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:#aaa;max-width:560px;line-height:1.7;margin-bottom:48px;}
+.hero-sub strong{color:var(--white);}
+
+/* TIMER */
+.timer-box{background:var(--dark2);border:1px solid rgba(245,197,24,0.25);padding:20px 36px;margin-bottom:48px;display:inline-block;}
+.timer-label{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#888;margin-bottom:10px;}
+.timer-display{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);letter-spacing:6px;line-height:1;}
+.timer-note{font-size:12px;color:#555;margin-top:8px;}
+
+/* PASSOS */
+.passos{max-width:700px;width:100%;margin:0 auto 48px;display:flex;flex-direction:column;gap:12px;}
+.passo{display:flex;gap:16px;align-items:flex-start;background:rgba(245,197,24,0.04);border:1px solid rgba(245,197,24,0.15);padding:18px 22px;text-align:left;}
+.passo-num{background:var(--gold);color:#000;font-family:'Bebas Neue',sans-serif;font-size:20px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.passo-text strong{display:block;font-size:14px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.passo-text p{font-size:14px;color:#888;line-height:1.5;margin:0;}
+
+/* WHATSAPP BTN */
+.wa-btn{display:inline-flex;align-items:center;gap:12px;background:#25D366;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;padding:18px 40px;text-decoration:none;border-radius:3px;box-shadow:0 4px 24px rgba(37,211,102,0.35);transition:all 0.2s;margin-bottom:16px;}
+.wa-btn:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,0.5);}
+.wa-btn svg{width:24px;height:24px;fill:white;flex-shrink:0;}
+.wa-note{font-size:13px;color:#555;}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(245,197,24,0.1);padding:32px 24px;text-align:center;}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:4px;margin-bottom:10px;}
+.footer-logo span{color:var(--gold);}
+footer p{color:#333;font-size:12px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero>*{animation:fadeUp 0.6s ease both;}
+.check-circle{animation-delay:0s}
+.hero-badge{animation-delay:0.1s}
+.hero h1{animation-delay:0.2s}
+.hero-sub{animation-delay:0.3s}
+.timer-box{animation-delay:0.4s}
+.passos{animation-delay:0.5s}
+.wa-btn{animation-delay:0.6s}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div style="display:inline-flex;align-items:center;gap:12px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,3vw,30px);letter-spacing:4px;color:#FAFAFA;white-space:nowrap;">ASSESSORIA <span style="color:#F5C518;">TAURUS</span></span>
+      <img src="data:image/png;base64,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" alt="Touro" style="height:36px;width:auto;">
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <!-- Confetes -->
+  <div class="confete">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Check -->
+  <div class="check-circle">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 13l4 4L19 7" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <div class="hero-badge">Contato Recebido com Sucesso</div>
+  <h1>Recebemos <em>Seu Contato!</em></h1>
+  <p class="hero-sub">Seus dados chegaram certinho.<br><strong>Nossa equipe entra em contato em até 5 minutos</strong> em horário comercial para agendar a reunião mais importante para sua barbearia.</p>
+
+  <!-- Timer -->
+  <div class="timer-box">
+    <div class="timer-label">⏱ Tempo estimado de retorno</div>
+    <div class="timer-display" id="timer">05:00</div>
+    <div class="timer-note">em horário comercial · dias úteis</div>
+  </div>
+
+  <!-- Passos -->
+  <div class="passos">
+    <div class="passo">
+      <div class="passo-num">1</div>
+      <div class="passo-text">
+        <strong>Diagnóstico</strong>
+        <p>Vamos entender sua barbearia, seu público e o potencial da sua região.</p>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">2</div>
+      <div class="passo-text">
+        <strong>Estratégia</strong>
+        <p>Montamos um plano de marketing personalizado para lotar sua agenda.</p>
+      </div>
+    </div>
+    <div class="passo">
+      <div class="passo-num">3</div>
+      <div class="passo-text">
+        <strong>Campanha no Ar</strong>
+        <p>Em até 72h após aprovação, seus anúncios já estão rodando e gerando agendamentos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp -->
+
+</section>
+
+<footer>
+  <div class="footer-logo">ASSESSORIA <span>TAURUS</span></div>
+  <p>© 2025 Assessoria Taurus · Especialistas em Marketing para Barbearias</p>
+</footer>
+
+<script>
+// Timer regressivo de 5 minutos
+let total = 5 * 60;
+const el = document.getElementById('timer');
+function pad(n){return String(n).padStart(2,'0');}
+function tick(){
+  if(total <= 0){el.textContent='00:00';return;}
+  total--;
+  const m = Math.floor(total/60);
+  const s = total%60;
+  el.textContent = pad(m)+':'+pad(s);
+  setTimeout(tick, 1000);
+}
+tick();
+</script>
+</body>
+</html>
